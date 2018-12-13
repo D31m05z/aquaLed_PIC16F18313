@@ -59,14 +59,13 @@
  {
     // Set the PWM to the options selected in the PIC10 / PIC12 / PIC16 / PIC18 MCUs.
     // PWM5POL active_hi; PWM5EN enabled; 
-    PWM5CON = 0x80;   
+    PWM5CON = 0x80;
 
     // PWM5DCH 4; 
-    PWM5DCH = 0x04;   
+    PWM5DCH = 0x04;
 
     // PWM5DCL 3; 
-    PWM5DCL = 0xC0;   
-
+    PWM5DCL = 0xC0;
  }
 
  void PWM5_LoadDutyValue(uint16_t dutyValue)

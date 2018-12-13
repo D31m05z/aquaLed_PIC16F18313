@@ -46,6 +46,7 @@
 /*
                          Main application
  */
+
 void main(void)
 {
     // initialize the device
@@ -66,9 +67,32 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
+    TMR2_StartTimer();
+
+    static uint16_t dutyCycleMin = 0;
+    static uint16_t dutyCycleMax = 1024;
+    static uint16_t delayCount = 50;
+
     while (1)
     {
         // Add your application code
+        for(uint16_t dutyCycle = dutyCycleMin; dutyCycle < dutyCycleMax; dutyCycle++)
+        {
+            PWM5_LoadDutyValue(dutyCycle);
+            for(uint16_t delay = 0; delay < delayCount; delay++)
+            {
+                ;
+            }
+        }
+
+        for(uint16_t dutyCycle = dutyCycleMax; dutyCycle > dutyCycleMin; dutyCycle--)
+        {
+            PWM5_LoadDutyValue(dutyCycle);
+            for(uint16_t delay = 0; delay < delayCount; delay++)
+            {
+                ;
+            }
+        }
     }
 }
 /**

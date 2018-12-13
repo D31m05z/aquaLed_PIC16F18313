@@ -50,10 +50,6 @@
 #include "pin_manager.h"
 #include "stdbool.h"
 
-
-
-
-
 void PIN_MANAGER_Initialize(void)
 {
     /**
@@ -85,13 +81,6 @@ void PIN_MANAGER_Initialize(void)
     SLRCONx registers
     */
     SLRCONA = 0x37;
-
-
-
-
-
-   
-    
 }
   
 void PIN_MANAGER_IOC(void)
