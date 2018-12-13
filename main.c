@@ -12,8 +12,6 @@ VSS          ->  GND
  *
  */
 
-#define _XTAL_FREQ 1000000 //needed for delay functions
-
 #include "mcc_generated_files/mcc.h"
 
 //Global variables
