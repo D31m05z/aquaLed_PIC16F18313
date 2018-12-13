@@ -1,26 +1,24 @@
 /**
-  Generated Pin Manager File
+  PWM1 Generated Driver File
 
-  Company:
+  @Company
     Microchip Technology Inc.
 
-  File Name:
-    pin_manager.c
+  @File Name
+    pwm1.c
 
-  Summary:
-    This is the Pin Manager file generated using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+  @Summary
+    This is the generated driver implementation file for the PWM1 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
-  Description:
-    This header file provides implementations for pin APIs for all pins selected in the GUI.
+  @Description
+    This source file provides implementations for driver APIs for PWM1.
     Generation Information :
         Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65.2
         Device            :  PIC16F18313
-        Driver Version    :  2.11
+        Driver Version    :  2.01
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.45
-        MPLAB             :  MPLAB X 4.15
-
-    Copyright (c) 2013 - 2015 released Microchip Technology Inc.  All rights reserved.
+         MPLAB 	          :  MPLAB X 4.15
 */
 
 /*
@@ -46,52 +44,61 @@
     SOFTWARE.
 */
 
+/**
+  Section: Included Files
+*/
+
 #include <xc.h>
-#include "pin_manager.h"
-#include "stdbool.h"
+#include "pwm1.h"
 
-void PIN_MANAGER_Initialize(void)
+/**
+  Section: Macro Declarations
+*/
+
+#define PWM1_INITIALIZE_DUTY_VALUE    511
+
+/**
+  Section: PWM Module APIs
+*/
+
+void PWM1_Initialize(void)
 {
-    /**
-    LATx registers
-    */
-    LATA = 0x00;
+    // Set the PWM1 to the options selected in the User Interface
 
-    /**
-    TRISx registers
-    */
-    TRISA = 0x20;
+	// CCP1MODE PWM; CCP1EN enabled; CCP1FMT right_aligned;
+	CCP1CON = 0x8F;
 
-    /**
-    ANSELx registers
-    */
-    ANSELA = 0x17;
+	// CCPR1H 1;
+	CCPR1H = 0x01;
 
-    /**
-    WPUx registers
-    */
-    WPUA = 0x20;
-
-    /**
-    ODx registers
-    */
-    ODCONA = 0x00;
-
-    /**
-    SLRCONx registers
-    */
-    SLRCONA = 0x37;
-
-    RA4PPS = 0x03;   //RA4->PWM6:PWM6;
-    RA1PPS = 0x0D;   //RA1->CCP2:CCP2;
-    RA2PPS = 0x02;   //RA2->PWM5:PWM5;
-    RA0PPS = 0x0C;   //RA0->CCP1:CCP1;
+	// CCPR1L 255;
+	CCPR1L = 0xFF;
 }
 
-void PIN_MANAGER_IOC(void)
+void PWM1_LoadDutyValue(uint16_t dutyValue)
 {
+    dutyValue &= 0x03FF;
+
+    // Load duty cycle value
+    if(CCP1CONbits.CCP1FMT)
+    {
+        dutyValue <<= 6;
+        CCPR1H = dutyValue >> 8;
+        CCPR1L = dutyValue;
+    }
+    else
+    {
+        CCPR1H = dutyValue >> 8;
+        CCPR1L = dutyValue;
+    }
 }
 
+bool PWM1_OutputStatusGet(void)
+{
+    // Returns the output status
+    return(CCP1CONbits.CCP1OUT);
+}
 /**
  End of File
 */
+

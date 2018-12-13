@@ -18,29 +18,29 @@
         Driver Version    :  2.11
     The generated drivers are tested against the following:
         Compiler          :  XC8 1.45
-        MPLAB 	          :  MPLAB X 4.15	
+        MPLAB 	          :  MPLAB X 4.15
 */
 
 /*
-    (c) 2018 Microchip Technology Inc. and its subsidiaries. 
-    
-    Subject to your compliance with these terms, you may use Microchip software and any 
-    derivatives exclusively with Microchip products. It is your responsibility to comply with third party 
-    license terms applicable to your use of third party software (including open source software) that 
+    (c) 2018 Microchip Technology Inc. and its subsidiaries.
+
+    Subject to your compliance with these terms, you may use Microchip software and any
+    derivatives exclusively with Microchip products. It is your responsibility to comply with third party
+    license terms applicable to your use of third party software (including open source software) that
     may accompany Microchip software.
-    
-    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER 
-    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY 
-    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS 
+
+    THIS SOFTWARE IS SUPPLIED BY MICROCHIP "AS IS". NO WARRANTIES, WHETHER
+    EXPRESS, IMPLIED OR STATUTORY, APPLY TO THIS SOFTWARE, INCLUDING ANY
+    IMPLIED WARRANTIES OF NON-INFRINGEMENT, MERCHANTABILITY, AND FITNESS
     FOR A PARTICULAR PURPOSE.
-    
-    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE, 
-    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND 
-    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP 
-    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO 
-    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL 
-    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT 
-    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS 
+
+    IN NO EVENT WILL MICROCHIP BE LIABLE FOR ANY INDIRECT, SPECIAL, PUNITIVE,
+    INCIDENTAL OR CONSEQUENTIAL LOSS, DAMAGE, COST OR EXPENSE OF ANY KIND
+    WHATSOEVER RELATED TO THE SOFTWARE, HOWEVER CAUSED, EVEN IF MICROCHIP
+    HAS BEEN ADVISED OF THE POSSIBILITY OR THE DAMAGES ARE FORESEEABLE. TO
+    THE FULLEST EXTENT ALLOWED BY LAW, MICROCHIP'S TOTAL LIABILITY ON ALL
+    CLAIMS IN ANY WAY RELATED TO THIS SOFTWARE WILL NOT EXCEED THE AMOUNT
+    OF FEES, IF ANY, THAT YOU HAVE PAID DIRECTLY TO MICROCHIP FOR THIS
     SOFTWARE.
 */
 
@@ -58,6 +58,74 @@
 
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
+
+// get/set RA0 procedures
+#define RA0_SetHigh()            do { LATAbits.LATA0 = 1; } while(0)
+#define RA0_SetLow()             do { LATAbits.LATA0 = 0; } while(0)
+#define RA0_Toggle()             do { LATAbits.LATA0 = ~LATAbits.LATA0; } while(0)
+#define RA0_GetValue()              PORTAbits.RA0
+#define RA0_SetDigitalInput()    do { TRISAbits.TRISA0 = 1; } while(0)
+#define RA0_SetDigitalOutput()   do { TRISAbits.TRISA0 = 0; } while(0)
+#define RA0_SetPullup()             do { WPUAbits.WPUA0 = 1; } while(0)
+#define RA0_ResetPullup()           do { WPUAbits.WPUA0 = 0; } while(0)
+#define RA0_SetAnalogMode()         do { ANSELAbits.ANSA0 = 1; } while(0)
+#define RA0_SetDigitalMode()        do { ANSELAbits.ANSA0 = 0; } while(0)
+
+// get/set RA1 procedures
+#define RA1_SetHigh()            do { LATAbits.LATA1 = 1; } while(0)
+#define RA1_SetLow()             do { LATAbits.LATA1 = 0; } while(0)
+#define RA1_Toggle()             do { LATAbits.LATA1 = ~LATAbits.LATA1; } while(0)
+#define RA1_GetValue()              PORTAbits.RA1
+#define RA1_SetDigitalInput()    do { TRISAbits.TRISA1 = 1; } while(0)
+#define RA1_SetDigitalOutput()   do { TRISAbits.TRISA1 = 0; } while(0)
+#define RA1_SetPullup()             do { WPUAbits.WPUA1 = 1; } while(0)
+#define RA1_ResetPullup()           do { WPUAbits.WPUA1 = 0; } while(0)
+#define RA1_SetAnalogMode()         do { ANSELAbits.ANSA1 = 1; } while(0)
+#define RA1_SetDigitalMode()        do { ANSELAbits.ANSA1 = 0; } while(0)
+
+// get/set RA2 procedures
+#define RA2_SetHigh()            do { LATAbits.LATA2 = 1; } while(0)
+#define RA2_SetLow()             do { LATAbits.LATA2 = 0; } while(0)
+#define RA2_Toggle()             do { LATAbits.LATA2 = ~LATAbits.LATA2; } while(0)
+#define RA2_GetValue()              PORTAbits.RA2
+#define RA2_SetDigitalInput()    do { TRISAbits.TRISA2 = 1; } while(0)
+#define RA2_SetDigitalOutput()   do { TRISAbits.TRISA2 = 0; } while(0)
+#define RA2_SetPullup()             do { WPUAbits.WPUA2 = 1; } while(0)
+#define RA2_ResetPullup()           do { WPUAbits.WPUA2 = 0; } while(0)
+#define RA2_SetAnalogMode()         do { ANSELAbits.ANSA2 = 1; } while(0)
+#define RA2_SetDigitalMode()        do { ANSELAbits.ANSA2 = 0; } while(0)
+
+// get/set RA4 procedures
+#define RA4_SetHigh()            do { LATAbits.LATA4 = 1; } while(0)
+#define RA4_SetLow()             do { LATAbits.LATA4 = 0; } while(0)
+#define RA4_Toggle()             do { LATAbits.LATA4 = ~LATAbits.LATA4; } while(0)
+#define RA4_GetValue()              PORTAbits.RA4
+#define RA4_SetDigitalInput()    do { TRISAbits.TRISA4 = 1; } while(0)
+#define RA4_SetDigitalOutput()   do { TRISAbits.TRISA4 = 0; } while(0)
+#define RA4_SetPullup()             do { WPUAbits.WPUA4 = 1; } while(0)
+#define RA4_ResetPullup()           do { WPUAbits.WPUA4 = 0; } while(0)
+#define RA4_SetAnalogMode()         do { ANSELAbits.ANSA4 = 1; } while(0)
+#define RA4_SetDigitalMode()        do { ANSELAbits.ANSA4 = 0; } while(0)
+
+// get/set Gomb aliases
+#define Gomb_TRIS                 TRISAbits.TRISA5
+#define Gomb_LAT                  LATAbits.LATA5
+#define Gomb_PORT                 PORTAbits.RA5
+#define Gomb_WPU                  WPUAbits.WPUA5
+#define Gomb_OD                   ODCONAbits.ODCA5
+#define Gomb_ANS                  ANSELAbits.ANSA5
+#define Gomb_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
+#define Gomb_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
+#define Gomb_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
+#define Gomb_GetValue()           PORTAbits.RA5
+#define Gomb_SetDigitalInput()    do { TRISAbits.TRISA5 = 1; } while(0)
+#define Gomb_SetDigitalOutput()   do { TRISAbits.TRISA5 = 0; } while(0)
+#define Gomb_SetPullup()          do { WPUAbits.WPUA5 = 1; } while(0)
+#define Gomb_ResetPullup()        do { WPUAbits.WPUA5 = 0; } while(0)
+#define Gomb_SetPushPull()        do { ODCONAbits.ODCA5 = 0; } while(0)
+#define Gomb_SetOpenDrain()       do { ODCONAbits.ODCA5 = 1; } while(0)
+#define Gomb_SetAnalogMode()      do { ANSELAbits.ANSA5 = 1; } while(0)
+#define Gomb_SetDigitalMode()     do { ANSELAbits.ANSA5 = 0; } while(0)
 
 /**
    @Param

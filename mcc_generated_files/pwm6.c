@@ -1,17 +1,17 @@
  /**
-   PWM5 Generated Driver API Header File
+   PWM6 Generated Driver File
 
    @Company
      Microchip Technology Inc.
 
    @File Name
-    pwm5.h
+     pwm6.c
 
    @Summary
-     This is the generated header file for the PWM5 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+     This is the generated driver implementation file for the PWM6 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
    @Description
-     This header file provides APIs for driver for PWM5.
+     This source file provides implementations for driver APIs for PWM6.
      Generation Information :
          Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65.2
          Device            :  PIC16F18313
@@ -21,7 +21,7 @@
          MPLAB             :  MPLAB X 4.15
  */
 
-/*
+ /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries.
 
     Subject to your compliance with these terms, you may use Microchip software and any
@@ -44,98 +44,38 @@
     SOFTWARE.
 */
 
-#ifndef PWM5_H
- #define PWM5_H
-
  /**
    Section: Included Files
  */
 
  #include <xc.h>
- #include <stdint.h>
-
- #ifdef __cplusplus  // Provide C++ Compatibility
-
-     extern "C" {
-
- #endif
-
- /**
-   Section: Macro Declarations
- */
-
- #define PWM5_INITIALIZE_DUTY_VALUE    511
+ #include "pwm6.h"
 
  /**
    Section: PWM Module APIs
  */
 
- /**
-   @Summary
-     Initializes the PWM5
+ void PWM6_Initialize(void)
+ {
+    // Set the PWM to the options selected in the PIC10 / PIC12 / PIC16 / PIC18 MCUs.
+    // PWM6POL active_hi; PWM6EN enabled;
+    PWM6CON = 0x80;
 
-   @Description
-     This routine initializes the EPWM5_Initialize
-     This routine must be called before any other PWM5 routine is called.
-     This routine should only be called once during system initialization.
+    // PWM6DCH 127;
+    PWM6DCH = 0x7F;
 
-   @Preconditions
-     None
+    // PWM6DCL 3;
+    PWM6DCL = 0xC0;
+ }
 
-   @Param
-     None
+ void PWM6_LoadDutyValue(uint16_t dutyValue)
+ {
+     // Writing to 8 MSBs of PWM duty cycle in PWMDCH register
+     PWM6DCH = (dutyValue & 0x03FC)>>2;
 
-   @Returns
-     None
-
-   @Comment
-
-
-  @Example
-     <code>
-     uint16_t dutycycle;
-
-     PWM5_Initialize();
-     PWM5_LoadDutyValue(dutycycle);
-     </code>
-  */
- void PWM5_Initialize(void);
-
- /**
-   @Summary
-     Loads 16-bit duty cycle.
-
-   @Description
-     This routine loads the 16 bit duty cycle value.
-
-   @Preconditions
-     PWM5_Initialize() function should have been called
-         before calling this function.
-
-   @Param
-     Pass 16bit duty cycle value.
-
-   @Returns
-     None
-
-   @Example
-     <code>
-     uint16_t dutycycle;
-
-     PWM5_Initialize();
-     PWM5_LoadDutyValue(dutycycle);
-     </code>
- */
- void PWM5_LoadDutyValue(uint16_t dutyValue);
-
-
- #ifdef __cplusplus  // Provide C++ Compatibility
-
-     }
-
- #endif
-
- #endif	//PWM5_H
+     // Writing to 2 LSBs of PWM duty cycle in PWMDCL register
+     PWM6DCL = (dutyValue & 0x0003)<<6;
+ }
  /**
   End of File
  */

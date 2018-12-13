@@ -1,17 +1,17 @@
  /**
-   PWM5 Generated Driver API Header File
+   PWM6 Generated Driver API Header File
 
    @Company
      Microchip Technology Inc.
 
    @File Name
-    pwm5.h
+    pwm6.h
 
    @Summary
-     This is the generated header file for the PWM5 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
+     This is the generated header file for the PWM6 driver using PIC10 / PIC12 / PIC16 / PIC18 MCUs
 
    @Description
-     This header file provides APIs for driver for PWM5.
+     This header file provides APIs for driver for PWM6.
      Generation Information :
          Product Revision  :  PIC10 / PIC12 / PIC16 / PIC18 MCUs - 1.65.2
          Device            :  PIC16F18313
@@ -44,8 +44,8 @@
     SOFTWARE.
 */
 
-#ifndef PWM5_H
- #define PWM5_H
+#ifndef PWM6_H
+ #define PWM6_H
 
  /**
    Section: Included Files
@@ -64,7 +64,7 @@
    Section: Macro Declarations
  */
 
- #define PWM5_INITIALIZE_DUTY_VALUE    511
+ #define PWM6_INITIALIZE_DUTY_VALUE    511
 
  /**
    Section: PWM Module APIs
@@ -72,11 +72,11 @@
 
  /**
    @Summary
-     Initializes the PWM5
+     Initializes the PWM6
 
    @Description
-     This routine initializes the EPWM5_Initialize
-     This routine must be called before any other PWM5 routine is called.
+     This routine initializes the EPWM6_Initialize
+     This routine must be called before any other PWM6 routine is called.
      This routine should only be called once during system initialization.
 
    @Preconditions
@@ -95,11 +95,11 @@
      <code>
      uint16_t dutycycle;
 
-     PWM5_Initialize();
-     PWM5_LoadDutyValue(dutycycle);
+     PWM6_Initialize();
+     PWM6_LoadDutyValue(dutycycle);
      </code>
   */
- void PWM5_Initialize(void);
+ void PWM6_Initialize(void);
 
  /**
    @Summary
@@ -109,7 +109,7 @@
      This routine loads the 16 bit duty cycle value.
 
    @Preconditions
-     PWM5_Initialize() function should have been called
+     PWM6_Initialize() function should have been called
          before calling this function.
 
    @Param
@@ -122,11 +122,11 @@
      <code>
      uint16_t dutycycle;
 
-     PWM5_Initialize();
-     PWM5_LoadDutyValue(dutycycle);
+     PWM6_Initialize();
+     PWM6_LoadDutyValue(dutycycle);
      </code>
  */
- void PWM5_LoadDutyValue(uint16_t dutyValue);
+ void PWM6_LoadDutyValue(uint16_t dutyValue);
 
 
  #ifdef __cplusplus  // Provide C++ Compatibility
@@ -135,7 +135,7 @@
 
  #endif
 
- #endif	//PWM5_H
+ #endif	//PWM6_H
  /**
   End of File
  */
