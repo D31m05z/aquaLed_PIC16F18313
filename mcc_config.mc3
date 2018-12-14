@@ -1335,7 +1335,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="Pin Module" name="Custom Name RA5"/>
-         <value>Gomb</value>
+         <value>Button</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.OptionKey" moduleName="System Module" registerAlias="CONFIG2" settingAlias="MCLRE" alias="OFF"/>
@@ -3157,7 +3157,7 @@
    <generatedFileHashHistoryMap class="java.util.HashMap">
       <entry>
          <file>mcc_generated_files/pin_manager.h</file>
-         <hash>27445ab037da19bbdfb4d2e122281ff199d41b322863983c8572213b45a87c69</hash>
+         <hash>c5816376b0f7692fb6d1c27c6990e7cb09d9d0f86eec1aa0a72cfdad6e8f714c</hash>
       </entry>
       <entry>
          <file>mcc_generated_files/pwm5.c</file>

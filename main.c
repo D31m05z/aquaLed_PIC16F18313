@@ -35,7 +35,6 @@ bool ButtonChangeCheck(void);
 /**
  * Initialize led driver
  */
-
 void initialize(void)
 {
     // initialize the device
@@ -58,12 +57,11 @@ void loop(void);
  */
 void main(void)
 {
-    //initialize
+    // initialize
     initialize();
 
-    // Run infinite
-    while (true)
-    {
+    // main loop
+    while (true) {
         if(ButtonChangeCheck()) {
             // if button press detected change state
             ++state;
@@ -116,7 +114,7 @@ void setPWMValues(uint16_t dutyValue, const PwmChannel_t pwmMode) {
 
 void random(void) {
     uint16_t maxValue = 40;
-    setPWMValues(rand() % maxValue, ALL); // 0-39
+    setPWMValues(rand() % maxValue, rand() % 5); // 0-39
    __delay_ms(1000);
 }
 
@@ -143,7 +141,6 @@ void blinking(void) {
 void loop(void) {
     switch(state) {
         case 0: // initialize state
-            //read EEPROM later
             setPWMValues(0x00, ALL); //Switch off
             state = 1;
             break;
@@ -172,10 +169,10 @@ void loop(void) {
 }
 
 bool ButtonChangeCheck(void) {
-    if(!Gomb_GetValue()) {
-        //gomb is active low
+    if(!Button_GetValue()) {
+        //button is active low
         __delay_ms(10); //wait for prell
-        while(!Gomb_GetValue())
+        while(!Button_GetValue())
             ; //wait until release
         __delay_ms(10); //wait for prell
         return true; // button pressed

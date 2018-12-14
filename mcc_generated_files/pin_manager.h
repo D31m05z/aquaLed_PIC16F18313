@@ -107,25 +107,25 @@
 #define RA4_SetAnalogMode()         do { ANSELAbits.ANSA4 = 1; } while(0)
 #define RA4_SetDigitalMode()        do { ANSELAbits.ANSA4 = 0; } while(0)
 
-// get/set Gomb aliases
-#define Gomb_TRIS                 TRISAbits.TRISA5
-#define Gomb_LAT                  LATAbits.LATA5
-#define Gomb_PORT                 PORTAbits.RA5
-#define Gomb_WPU                  WPUAbits.WPUA5
-#define Gomb_OD                   ODCONAbits.ODCA5
-#define Gomb_ANS                  ANSELAbits.ANSA5
-#define Gomb_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
-#define Gomb_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
-#define Gomb_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
-#define Gomb_GetValue()           PORTAbits.RA5
-#define Gomb_SetDigitalInput()    do { TRISAbits.TRISA5 = 1; } while(0)
-#define Gomb_SetDigitalOutput()   do { TRISAbits.TRISA5 = 0; } while(0)
-#define Gomb_SetPullup()          do { WPUAbits.WPUA5 = 1; } while(0)
-#define Gomb_ResetPullup()        do { WPUAbits.WPUA5 = 0; } while(0)
-#define Gomb_SetPushPull()        do { ODCONAbits.ODCA5 = 0; } while(0)
-#define Gomb_SetOpenDrain()       do { ODCONAbits.ODCA5 = 1; } while(0)
-#define Gomb_SetAnalogMode()      do { ANSELAbits.ANSA5 = 1; } while(0)
-#define Gomb_SetDigitalMode()     do { ANSELAbits.ANSA5 = 0; } while(0)
+// get/set Button aliases
+#define Button_TRIS                 TRISAbits.TRISA5
+#define Button_LAT                  LATAbits.LATA5
+#define Button_PORT                 PORTAbits.RA5
+#define Button_WPU                  WPUAbits.WPUA5
+#define Button_OD                   ODCONAbits.ODCA5
+#define Button_ANS                  ANSELAbits.ANSA5
+#define Button_SetHigh()            do { LATAbits.LATA5 = 1; } while(0)
+#define Button_SetLow()             do { LATAbits.LATA5 = 0; } while(0)
+#define Button_Toggle()             do { LATAbits.LATA5 = ~LATAbits.LATA5; } while(0)
+#define Button_GetValue()           PORTAbits.RA5
+#define Button_SetDigitalInput()    do { TRISAbits.TRISA5 = 1; } while(0)
+#define Button_SetDigitalOutput()   do { TRISAbits.TRISA5 = 0; } while(0)
+#define Button_SetPullup()          do { WPUAbits.WPUA5 = 1; } while(0)
+#define Button_ResetPullup()        do { WPUAbits.WPUA5 = 0; } while(0)
+#define Button_SetPushPull()        do { ODCONAbits.ODCA5 = 0; } while(0)
+#define Button_SetOpenDrain()       do { ODCONAbits.ODCA5 = 1; } while(0)
+#define Button_SetAnalogMode()      do { ANSELAbits.ANSA5 = 1; } while(0)
+#define Button_SetDigitalMode()     do { ANSELAbits.ANSA5 = 0; } while(0)
 
 /**
    @Param
