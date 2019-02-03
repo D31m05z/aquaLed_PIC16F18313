@@ -55,7 +55,7 @@
   Section: Macro Declarations
 */
 
-#define PWM1_INITIALIZE_DUTY_VALUE    511
+#define PWM1_INITIALIZE_DUTY_VALUE    0
 
 /**
   Section: PWM Module APIs
@@ -65,32 +65,20 @@ void PWM1_Initialize(void)
 {
     // Set the PWM1 to the options selected in the User Interface
 
-	// CCP1MODE PWM; CCP1EN enabled; CCP1FMT right_aligned;
-	CCP1CON = 0x8F;
+	// CCP1MODE PWM; CCP1EN enabled; CCP1FMT left_aligned;
+	CCP1CON = 0x9F;
 
-	// CCPR1H 1;
-	CCPR1H = 0x01;
+	// CCPR1H 0;
+	CCPR1H = 0x00;
 
-	// CCPR1L 255;
-	CCPR1L = 0xFF;
+	// CCPR1L 0;
+	CCPR1L = 0x00;
 }
 
 void PWM1_LoadDutyValue(uint16_t dutyValue)
 {
-    dutyValue &= 0x03FF;
-
-    // Load duty cycle value
-    if(CCP1CONbits.CCP1FMT)
-    {
-        dutyValue <<= 6;
-        CCPR1H = dutyValue >> 8;
-        CCPR1L = dutyValue;
-    }
-    else
-    {
-        CCPR1H = dutyValue >> 8;
-        CCPR1L = dutyValue;
-    }
+    CCPR1H = dutyValue;
+    CCPR1L = 0x0FF;
 }
 
 bool PWM1_OutputStatusGet(void)

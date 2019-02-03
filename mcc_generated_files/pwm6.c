@@ -71,10 +71,10 @@
  void PWM6_LoadDutyValue(uint16_t dutyValue)
  {
      // Writing to 8 MSBs of PWM duty cycle in PWMDCH register
-     PWM6DCH = (dutyValue & 0x03FC)>>2;
+     PWM6DCH = dutyValue;//(dutyValue & 0x03FC)>>2;
 
      // Writing to 2 LSBs of PWM duty cycle in PWMDCL register
-     PWM6DCL = (dutyValue & 0x0003)<<6;
+     PWM6DCL = 0x00;//(dutyValue & 0x0003)<<6;
  }
  /**
   End of File

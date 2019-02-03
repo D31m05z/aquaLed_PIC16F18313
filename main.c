@@ -15,7 +15,8 @@ VSS          ->  GND
 #include "mcc_generated_files/mcc.h"
 
 //Global variables
-char state = 0;
+uint8_t state = 0;
+uint16_t dataeeAddr = 0xF010;
 
 typedef enum PwmChannel {
     ALL  = 0,
@@ -32,6 +33,8 @@ typedef enum PwmChannel {
  */
 bool ButtonChangeCheck(void);
 
+void setPWMValues(uint16_t dutyValue, const PwmChannel_t pwmMode);
+
 /**
  * Initialize led driver
  */
@@ -43,8 +46,9 @@ void initialize(void)
     // start TMR2 timer
     TMR2_StartTimer();
 
-    // initialize state machine
-    state = 0;
+    // initialize state machine from memory
+    // TODO: initial value maybe uninitialized
+    state = DATAEE_ReadByte(dataeeAddr);
 }
 
 /**
@@ -65,6 +69,9 @@ void main(void)
         if(ButtonChangeCheck()) {
             // if button press detected change state
             ++state;
+
+            // store state value to memory
+            DATAEE_WriteByte(dataeeAddr, state);
         }
 
         // execute state machine
@@ -139,6 +146,59 @@ void blinking(void) {
 }
 
 void loop(void) {
+    switch(state) {
+    case 0: // initialize state
+        setPWMValues(0x00, ALL); //Switch off
+        state = 1;
+        break;
+    case 1:
+        PWM2_LoadDutyValue(1);    // R
+        PWM1_LoadDutyValue(1);    // G
+        PWM5_LoadDutyValue(1);    // B
+        PWM6_LoadDutyValue(1);    // W
+        break;
+    case 2:
+        PWM2_LoadDutyValue(18);    // R
+        PWM1_LoadDutyValue(21);    // G
+        PWM5_LoadDutyValue(14);    // B
+        PWM6_LoadDutyValue(19);    // W
+        break;
+    case 3:
+        PWM2_LoadDutyValue(38);    // R
+        PWM1_LoadDutyValue(43);    // G
+        PWM5_LoadDutyValue(26);    // B
+        PWM6_LoadDutyValue(38);    // W
+        break;
+    case 4:
+        PWM2_LoadDutyValue(85);    // R
+        PWM1_LoadDutyValue(86);    // G
+        PWM5_LoadDutyValue(54);    // B
+        PWM6_LoadDutyValue(75);    // W
+        break;
+    case 5:
+        PWM2_LoadDutyValue(131);    // R
+        PWM1_LoadDutyValue(131);    // G
+        PWM5_LoadDutyValue(83);     // B
+        PWM6_LoadDutyValue(113);    // W
+        break;
+    case 6:
+        PWM2_LoadDutyValue(182);    // R
+        PWM1_LoadDutyValue(174);    // G
+        PWM5_LoadDutyValue(110);    // B
+        PWM6_LoadDutyValue(150);    // W
+        break;
+    case 7:
+        PWM2_LoadDutyValue(225);    // R
+        PWM1_LoadDutyValue(214);    // G
+        PWM5_LoadDutyValue(138);    // B
+        PWM6_LoadDutyValue(188);    // W
+        break;
+    default:
+        setPWMValues(0x00, ALL); //Switch off
+        state = 0;
+    }
+}
+void loop_for_demo(void) {
     switch(state) {
         case 0: // initialize state
             setPWMValues(0x00, ALL); //Switch off
