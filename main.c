@@ -160,10 +160,10 @@ void loop(void) {
         state = 1;
         break;
     case 1:
-        PWM2_LoadDutyValue(1);    // R
-        PWM1_LoadDutyValue(1);    // G
-        PWM5_LoadDutyValue(1);    // B
-        PWM6_LoadDutyValue(1);    // W
+        PWM2_LoadDutyValue(2);    // R
+        PWM1_LoadDutyValue(2);    // G
+        PWM5_LoadDutyValue(2);    // B
+        PWM6_LoadDutyValue(2);    // W
         break;
     case 2:
         PWM2_LoadDutyValue(18);    // R
@@ -206,6 +206,7 @@ void loop(void) {
         state = 0;
     }
 }
+
 void loop_for_demo(void) {
     switch(state) {
         case 0: // initialize state

@@ -77,7 +77,7 @@ void PWM1_Initialize(void)
 
 void PWM1_LoadDutyValue(uint16_t dutyValue)
 {
-    CCPR1H = dutyValue;
+    CCPR1H = dutyValue * PR2 / 0xFF;
     CCPR1L = 0x0FF;
 }
 
